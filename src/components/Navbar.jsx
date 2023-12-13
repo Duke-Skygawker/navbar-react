@@ -8,11 +8,13 @@ const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
 
   return (
-    <nav>
-      <Logo />
-      <div className="links-container">
-        <Links links={links} />
-        <Socials socials={social} />
+    <nav className="navbar">
+      <div className="nav">
+        <Logo />
+        <div className="links-container">
+          <Links links={links} />
+          <Socials socials={social} />
+        </div>
       </div>
     </nav>
   );
