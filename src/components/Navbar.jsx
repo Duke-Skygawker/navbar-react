@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { links, social } from "../data";
 import { FaBars } from "react-icons/fa";
 import Logo from "./Logo";
@@ -7,8 +7,15 @@ import Socials from "./Socials";
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
+  const [linksHeight, setLinksHeight] = useState(0);
+  const [linksMargin, setLinksMargin] = useState(0);
+
+  const linksRef = useRef(null);
 
   const expandLinks = () => {
+    const linksCont = linksRef.current.getBoundingClientRect();
+    setLinksHeight(linksCont.x);
+    setLinksMargin(linksCont.top * 2);
     setShowLinks(!showLinks);
   };
 
@@ -17,10 +24,13 @@ const Navbar = () => {
       <div className="nav">
         <Logo />
         <div
-          className={
-            showLinks ? "links-container display-flex" : "links-container"
+          className="links-container"
+          style={
+            showLinks
+              ? { height: `${linksHeight - linksMargin}px` }
+              : { height: "0" }
           }
-          style={showLinks ? { height: "15rem" } : { height: "0" }}
+          ref={linksRef}
         >
           <Links links={links} />
           <Socials socials={social} />
