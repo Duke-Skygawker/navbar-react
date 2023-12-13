@@ -254,18 +254,21 @@ ul {
 }
 /* ============= PROJECT CSS =============== */
 body {
-  background-color: var(--primary-400);
+  background-color: var(--primary-100);
 }
 nav {
   position: sticky;
   top: 0;
   background-color: var(--backgroundColor);
   padding: 0.5rem;
-  box-shadow: 0 2px 3px var(--black);
+  box-shadow: 0 2px 1px var(--grey-400);
 }
 .navbar,
 .nav {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 .logo {
   margin: 0 2rem;
@@ -275,52 +278,98 @@ nav {
 }
 .links-container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 10rem;
+  /* display: none; */
+}
+.nav-links {
+  display: flex;
+  text-transform: capitalize;
   flex-direction: column;
+  flex-wrap: wrap;
+}
+.socials {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  font-size: 1.3rem;
+  margin-left: 4rem;
+}
+.socials a,
+.nav-links a {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+.socials a {
+  color: var(--primary-600);
 }
 .nav-links a {
   color: var(--black);
   text-decoration: none;
-  text-transform: capitalize;
 }
 
 /* =========== MEDIA QUERIES =============== */
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   .navbar,
   .nav {
     flex-direction: row;
   }
   .nav {
-    width: 80%;
-    margin: 0 auto;
     align-items: center;
     justify-content: space-between;
   }
   .logo {
-    margin: 0 auto;
+    align-items: flex-start;
+    /* margin-right: 5rem; */
     padding-right: 1rem;
   }
   .logo img {
-    height: 3rem;
+    height: 2.4rem;
   }
   .links-container {
-    width: 100%;
+    flex-direction: row;
+    min-width: 30rem;
     align-items: center;
-    justify-content: space-around;
-    font-size: 1.3rem;
+    justify-content: space-between;
     margin-left: -2rem;
+    flex-wrap: nowrap;
+    font-size: 1.1rem;
   }
   .nav-links {
-    margin: 0 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-width: 30%;
   }
+  .socials {
+    flex-direction: row;
+  }
+
   .nav-links a,
   .socials a {
     margin: 0 0.25rem;
   }
 }
 
-@media (min-width: 948px) {
+@media only screen and (min-width: 948px) {
+  .nav {
+    width: 90%;
+  }
   .links-container {
     flex-direction: row;
-    margin-left: -4rem;
+    /* margin-left: -7rem; */
+    justify-content: space-between;
+    font-size: 1.3rem;
+    min-width: 75%;
+  }
+  .nav-links {
+    margin: 0 auto;
+  }
+  .logo {
+    margin: 0 auto;
+    padding-left: 5rem;
+  }
+  .logo img {
+    height: 3rem;
   }
 }

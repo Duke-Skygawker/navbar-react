@@ -1,10 +1,14 @@
 const Links = ({ links }) => {
   return (
     <div className="nav-links">
-      {links.map((link) => {
+      {links.map((item) => {
         return (
-          <a key={link.id} href={link.url}>
-            {link.text}
+          <a
+            style={{ textTransform: "capitalize" }}
+            key={item.id}
+            href={item.url}
+          >
+            {item.text}
           </a>
         );
       })}
