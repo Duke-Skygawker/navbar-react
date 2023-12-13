@@ -9,7 +9,7 @@ const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const [linksHeight, setLinksHeight] = useState(0);
   const [linksMargin, setLinksMargin] = useState(0);
-  const [navWidth, setNavWidth] = useState(0);
+  const [navWidth, setNavWidth] = useState(window.innerWidth);
   const navRef = useRef(null);
   const linksRef = useRef(null);
 
@@ -42,7 +42,9 @@ const Navbar = () => {
           className="links-container"
           style={
             showLinks
-              ? { height: `${linksHeight - linksMargin}px` }
+              ? navWidth >= 648
+                ? { height: `${linksHeight - linksMargin}px` }
+                : { height: `${linksHeight}px` }
               : navWidth >= 768
               ? { height: "2rem" }
               : { height: "0" }
