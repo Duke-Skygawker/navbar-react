@@ -280,8 +280,11 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 0;
+  overflow: hidden;
   width: 10rem;
   /* display: none; */
+  transition: var(--transition);
 }
 .nav-links {
   display: flex;
@@ -308,9 +311,25 @@ nav {
   color: var(--black);
   text-decoration: none;
 }
+.display-flex {
+  display: flex;
+}
+.toggler {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 0.6rem;
+  margin-right: 2rem;
+}
+.deg90 {
+  transform: rotate(90deg);
+}
 
 /* =========== MEDIA QUERIES =============== */
 @media only screen and (min-width: 768px) {
+  .toggler {
+    display: none;
+  }
   .navbar,
   .nav {
     flex-direction: row;
@@ -328,6 +347,7 @@ nav {
     height: 2.4rem;
   }
   .links-container {
+    display: flex;
     flex-direction: row;
     min-width: 30rem;
     align-items: center;
