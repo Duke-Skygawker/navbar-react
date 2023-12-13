@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { links, social } from "../data";
 import { FaBars } from "react-icons/fa";
 import Logo from "./Logo";
@@ -9,8 +9,23 @@ const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const [linksHeight, setLinksHeight] = useState(0);
   const [linksMargin, setLinksMargin] = useState(0);
-
+  const [navWidth, setNavWidth] = useState(0);
+  const navRef = useRef(null);
   const linksRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const navWidth = navRef.current.getBoundingClientRect().width;
+      if (navWidth >= 768) {
+        setShowLinks(false);
+      }
+      setNavWidth(navWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const expandLinks = () => {
     const linksCont = linksRef.current.getBoundingClientRect();
@@ -20,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={navRef}>
       <div className="nav">
         <Logo />
         <div
@@ -28,6 +43,8 @@ const Navbar = () => {
           style={
             showLinks
               ? { height: `${linksHeight - linksMargin}px` }
+              : navWidth >= 768
+              ? { height: "2rem" }
               : { height: "0" }
           }
           ref={linksRef}
@@ -45,4 +62,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;

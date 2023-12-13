@@ -306,6 +306,7 @@ nav {
 }
 .socials a {
   color: var(--primary-600);
+  font-size: 25px;
 }
 .nav-links a {
   color: var(--black);
@@ -355,6 +356,7 @@ nav {
     margin-left: -2rem;
     flex-wrap: nowrap;
     font-size: 1.1rem;
+    overflow: auto;
   }
   .nav-links {
     flex-direction: row;
@@ -377,10 +379,10 @@ nav {
   }
   .links-container {
     flex-direction: row;
-    /* margin-left: -7rem; */
+    margin-right: 7rem;
     justify-content: space-between;
     font-size: 1.3rem;
-    min-width: 75%;
+    min-width: 65%;
   }
   .nav-links {
     margin: 0 auto;
